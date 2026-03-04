@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Day 18 – JS Assignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e63946;
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 0.8rem;
+            margin-bottom: 30px;
+        }
+
+        .topic {
+            background: #111;
+            border-left: 3px solid #e63946;
+            border-radius: 4px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+        }
+
+        .topic h2 {
+            color: #e63946;
+            font-size: 1rem;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        input,
+        select {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            padding: 6px 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            border-radius: 3px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #e63946;
+        }
+
+        button {
+            background: #e63946;
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c1121f;
+        }
+
+        .output {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            border-radius: 3px;
+            padding: 12px;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            color: #a8dadc;
+            line-height: 1.7;
+            min-height: 40px;
+        }
+
+        .hint {
+            color: #444;
+            font-size: 0.75rem;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>⛩ DAY – 18 &nbsp;|&nbsp; JavaScript</h1>
+    <p class="subtitle">Assignment — 13.2.2025</p>
+
+
+    <!-- 1. SWITCH -->
+    <div class="topic">
+        <h2>1. Switch Statement</h2>
+        <div class="controls">
+            <select id="sw-char">
+                <option value="Naruto">Naruto</option>
+                <option value="Violet">Violet</option>
+                <option value="Light">Light</option>
+                <option value="Levi">Levi</option>
+                <option value="Gojo">Gojo</option>
+            </select>
+            <button onclick="runSwitch()">Check Genre</button>
+        </div>
+        <pre class="output" id="out-switch">← Select a character and click</pre>
+        <p class="hint">Switch checks which genre the character belongs to</p>
+    </div>
+
+
+    <!-- 2. LOOPS -->
+    <div class="topic">
+        <h2>2. Looping Statements (for / while / do-while)</h2>
+        <div class="controls">
+            <input type="number" id="ep-count" value="4" min="1" max="10" style="width:70px" />
+            <span style="color:#555; font-size:0.85rem">episodes</span>
+            <button onclick="runFor()">for loop</button>
+            <button onclick="runWhile()">while loop</button>
+            <button onclick="runDoWhile()">do-while loop</button>
+        </div>
+        <pre class="output" id="out-loops">← Enter count and pick a loop type</pre>
+        <p class="hint">All three loops print the same result — just different syntax</p>
+    </div>
+
+
+    <!-- 3. LOOP CONTROL -->
+    <div class="topic">
+        <h2>3. Loop Control Statements (break / continue)</h2>
+        <div class="controls">
+            <input type="number" id="filler-ep" value="3" min="1" max="8" style="width:70px" />
+            <span style="color:#555; font-size:0.85rem">filler ep#</span>
+            <button onclick="runContinue()">continue (skip filler)</button>
+            <button onclick="runBreak()">break (stop at ep 5)</button>
+        </div>
+        <pre class="output" id="out-control">← Pick a demo to see break or continue in action</pre>
+        <p class="hint">continue skips one iteration, break exits the loop entirely</p>
+    </div>
+
+
+    <!-- 4. FOR...IN / FOR...OF -->
+    <div class="topic">
+        <h2>4. For…in &amp; For…of Loop</h2>
+        <div class="controls">
+            <button onclick="runForIn()">for...in (object)</button>
+            <button onclick="runForOf()">for...of (array)</button>
+        </div>
+        <pre class="output" id="out-forin">← Click a button to loop through the data</pre>
+        <p class="hint">for...in → object keys &nbsp;|&nbsp; for...of → array values</p>
+    </div>
+
+
+    <!-- 5. FUNCTIONS -->
+    <div class="topic">
+        <h2>5. Functions</h2>
+        <div class="controls">
+            <input type="text" id="fn-name" placeholder="hero name" value="Naruto" style="width:130px" />
+            <input type="text" id="fn-jutsu" placeholder="jutsu (optional)" style="width:150px" />
+        </div>
+        <div class="controls" style="margin-bottom:12px">
+            <button onclick="runDeclared()">Declared fn</button>
+            <button onclick="runExpression()">Expression fn</button>
+            <button onclick="runArrow()">Arrow fn</button>
+            <button onclick="runDefault()">Default param</button>
+            <button onclick="runRest()">Rest param</button>
+        </div>
+        <pre class="output" id="out-functions">← Type a hero name and try each function type</pre>
+        <p class="hint">For rest param — add comma-separated names in the jutsu field e.g. Sasuke, Sakura</p>
+    </div>
+
+
+    <script>
+
+        function runSwitch() {
+            const character = document.getElementById("sw-char").value;
+            let genre;
+            switch (character) {
+                case "Naruto":
+                    genre = "Shonen";
+                    break;
+                case "Violet":
+                    genre = "Slice of Life";
+                    break;
+                case "Light":
+                    genre = "Psychological Thriller";
+                    break;
+                case "Levi":
+                    genre = "Dark Fantasy";
+                    break;
+                default:
+                    genre = "Unknown genre";
+            }
+            document.getElementById("out-switch").textContent =
+                `Character : ${character}\nGenre     : ${genre}`;
+        }
+
+
+        function runFor() {
+            const n = parseInt(document.getElementById("ep-count").value);
+            let out = "── for loop ──\n";
+            for (let i = 1; i <= n; i++) {
+                out += `Episode ${i} watched (One Piece)\n`;
+            }
+            document.getElementById("out-loops").textContent = out.trim();
+        }
+
+        function runWhile() {
+            const n = parseInt(document.getElementById("ep-count").value);
+            let out = "── while loop ──\n";
+            let i = 1;
+            while (i <= n) {
+                out += `Episode ${i} watched (AOT)\n`;
+                i++;
+            }
+            document.getElementById("out-loops").textContent = out.trim();
+        }
+
+        function runDoWhile() {
+            const n = parseInt(document.getElementById("ep-count").value);
+            let out = "── do-while loop ──\n";
+            let i = 1;
+            do {
+                out += `Episode ${i} watched (Demon Slayer)\n`;
+                i++;
+            } while (i <= n);
+            document.getElementById("out-loops").textContent = out.trim();
+        }
+
+
+        function runContinue() {
+            const filler = parseInt(document.getElementById("filler-ep").value);
+            let out = `── continue | Ep ${filler} is a filler ──\n`;
+            for (let i = 1; i <= 8; i++) {
+                if (i === filler) {
+                    out += `Ep ${i}: Filler — skipped\n`;
+                    continue;
+                }
+                out += `Ep ${i}: Watched\n`;
+            }
+            document.getElementById("out-control").textContent = out.trim();
+        }
+
+        function runBreak() {
+            let out = "── break | Stopping at Ep 5 ──\n";
+            for (let i = 1; i <= 10; i++) {
+                if (i === 5) {
+                    out += `Ep ${i}: Finale reached — stopped binge!`;
+                    break;
+                }
+                out += `Ep ${i}: Still going...\n`;
+            }
+            document.getElementById("out-control").textContent = out;
+        }
+
+
+        function runForIn() {
+            const character = {
+                name: "Itachi Uchiha",
+                anime: "Naruto",
+                ability: "Amaterasu",
+                rank: "Akatsuki"
+            };
+            let out = "── for...in (object keys) ──\n";
+            for (let key in character) {
+                out += `${key}: ${character[key]}\n`;
+            }
+            document.getElementById("out-forin").textContent = out.trim();
+        }
+
+        function runForOf() {
+            const animeList = ["Naruto", "Attack on Titan", "Jujutsu Kaisen", "Bleach"];
+            let out = "── for...of (array values) ──\n";
+            for (let anime of animeList) {
+                out += `→ ${anime}\n`;
+            }
+            document.getElementById("out-forin").textContent = out.trim();
+        }
+
+
+        function runDeclared() {
+            const name = document.getElementById("fn-name").value || "Naruto";
+            function greetHero(name) {
+                return `Yo, ${name}! Ready for battle?`;
+            }
+            document.getElementById("out-functions").textContent =
+                `── Declared Function ──\n${greetHero(name)}`;
+        }
+
+        function runExpression() {
+            const name = document.getElementById("fn-name").value || "Goku";
+            const jutsu = document.getElementById("fn-jutsu").value || "Ultra Instinct";
+            const showPower = function (hero, power) {
+                return `${hero}'s power: ${power}`;
+            };
+            document.getElementById("out-functions").textContent =
+                `── Function Expression ──\n${showPower(name, jutsu)}`;
+        }
+
+        function runArrow() {
+            const name = document.getElementById("fn-name").value || "Ichigo";
+            const getBattleCry = (name) => `${name}: BANKAI!!`;
+            document.getElementById("out-functions").textContent =
+                `── Arrow Function ──\n${getBattleCry(name)}`;
+        }
+
+        function runDefault() {
+            const name = document.getElementById("fn-name").value || "Naruto";
+            const jutsu = document.getElementById("fn-jutsu").value;
+            function summonJutsu(name, jutsu = "Shadow Clone Jutsu") {
+                return `${name} uses ${jutsu}!`;
+            }
+            let out = "── Default Parameters ──\n";
+            out += jutsu
+                ? summonJutsu(name, jutsu)
+                : `${summonJutsu(name)}  ← default used`;
+            document.getElementById("out-functions").textContent = out;
+        }
+
+        function runRest() {
+            const leader = document.getElementById("fn-name").value || "Kakashi";
+            const raw = document.getElementById("fn-jutsu").value;
+            const members = raw ? raw.split(",").map(s => s.trim()) : ["Naruto", "Sasuke", "Sakura"];
+            function teamRoll(leader, ...members) {
+                return `Leader : ${leader}\nTeam   : ${members.join(", ")}`;
+            }
+            document.getElementById("out-functions").textContent =
+                `── Rest Parameters ──\n${teamRoll(leader, ...members)}`;
+        }
+
+    </script>
+</body>
+
+</html>
