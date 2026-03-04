@@ -1,0 +1,9 @@
+<?php
+include("header.php");
+include("header.php");
+require("form_validation.php");
+require_once("form_validation.php");
+require_once("array_type.php");
+require_once("array_type.php");
+require("form_validation.php");
+?>
