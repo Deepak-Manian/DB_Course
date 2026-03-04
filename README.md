@@ -4,7 +4,7 @@
 This repository contains the coursework, assignments, and mini-projects completed as part of the **Database Front End Developer and Tester - Asgardia** program. The training was completed online through the **Asgardia Foundation** via the Vetri Nichayam platform.
 
 ## 👨‍💻 Author
-**Deepak M** (GitHub: Deepak-Manian)
+**Deepak M** 
 *Enrollment ID: ER2026-M380949*
 
 ## 🛠️ Technologies Used
