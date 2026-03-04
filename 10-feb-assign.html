@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JJK Assignment</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .box {
+            padding: 20px;
+            border: 1px solid black;
+            background: orange;
+            width: 200px;
+            text-align: center;
+        }
+
+        .my-section {
+            margin-bottom: 30px;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My Anime Assignment (10.2.2026)</h1>
+
+    <!-- 1. Onmouseout and Onkeydown -->
+    <div class="my-section">
+        <h3>1. Events (Jujutsu Kaisen)</h3>
+
+        <p><strong>Hover over the cursed finger:</strong></p>
+        <div class="box" onmouseout="mouseOutConfig(this)">Touch Sukuna's Finger</div>
+
+        <p><strong>Type your favorite character:</strong></p>
+        <input type="text" onkeydown="keyDownConfig()" placeholder="Type here...">
+    </div>
+
+    <!-- 2. Form Validation -->
+    <div class="my-section">
+        <h3>2. Login to Jujutsu High</h3>
+        <form onsubmit="validateForm(event)">
+            Username: <input type="text" id="user"><br><br>
+            Password: <input type="password" id="pass"> (min 6 chars)<br><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- 3. const and let -->
+    <div class="my-section">
+        <h3>3. Const vs Let</h3>
+        <button onclick="showVariables()">Show Variable Demo</button>
+        <p id="varOutput"></p>
+    </div>
+
+    <!-- 4. Datatypes -->
+    <div class="my-section">
+        <h3>4. Five Datatypes</h3>
+        <button onclick="showDatatypes()">Show Datatypes</button>
+        <p id="typeOutput"></p>
+    </div>
+
+    <script>
+        // --- 1. Events ---
+        function mouseOutConfig(element) {
+            element.style.background = "red";
+            element.innerText = "You are CURSED now!";
+        }
+
+        function keyDownConfig() {
+            console.log("A key was pressed!");
+            alert("You are typing a character name!");
+        }
+
+        // --- 2. Form Validation ---
+        function validateForm(e) {
+            e.preventDefault(); // stop refresh
+
+            let u = document.getElementById("user").value;
+            let p = document.getElementById("pass").value;
+
+            if (u == "") {
+                alert("Username is empty!");
+            } else if (p.length < 6) {
+                alert("Password must be 6 characters or more");
+            } else {
+                alert("Welcome Sorcerer " + u);
+            }
+        }
+
+        // --- 3. Const vs Let ---
+        function showVariables() {
+            let power = 100;
+            const name = "Gojo";
+
+            // changing let is fine
+            power = 1000;
+
+            // changing const is error
+            // name = "Sukuna"; // this will verify error
+
+            document.getElementById("varOutput").innerText =
+                "Let power is " + power + " (changed from 100). " +
+                "Const name is " + name + " (cannot change).";
+        }
+
+        // --- 4. Datatypes ---
+        function showDatatypes() {
+            let str = "Yuji";
+            let num = 20;
+            let bool = true;
+            let arr = ["Nobara", "Megumi"];
+            let obj = { school: "Tokyo High" };
+
+            document.getElementById("typeOutput").innerText =
+                "String: " + str + "\n" +
+                "Number: " + num + "\n" +
+                "Boolean: " + bool + "\n" +
+                "Array: " + arr + "\n" +
+                "Object: " + obj.school;
+        }
+    </script>
+</body>
+
+</html>

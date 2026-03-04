@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & JS</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Javascript DOM Manipulation</h2>
+
+        <h3>Student Table</h3>
+        <table id="myTable" border="1" style="width:100%; margin-bottom: 20px; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>B+</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Course List</h3>
+        <ul id="myList" style="margin-bottom: 20px;">
+            <li>Mathematics</li>
+            <li>Science</li>
+            <li>History</li>
+        </ul>
+
+        <button onclick="getValues()"
+            style="padding: 10px 20px; background-color: #333; color: white; border: none; cursor: pointer; border-radius: 4px;">Get
+            Values</button>
+    </div>
+
+    <script>
+        function getValues() {
+
+            const table = document.getElementById('myTable');
+            let tableOutput = "Table Values:\n";
+
+            for (let i = 1; i < table.rows.length; i++) {
+                let row = table.rows[i];
+                let name = row.cells[0].innerText;
+                let grade = row.cells[1].innerText;
+                tableOutput += `Student: ${name}, Grade: ${grade}\n`;
+            }
+
+
+            const list = document.getElementById('myList');
+            const listItems = list.getElementsByTagName('li');
+            let listOutput = "\nList Values:\n";
+            for (let i = 0; i < listItems.length; i++) {
+                listOutput += `- ${listItems[i].innerText}\n`;
+            }
+
+            alert(tableOutput + listOutput);
+            console.log(tableOutput);
+            console.log(listOutput);
+        }
+    </script>
+</body>
+
+</html>

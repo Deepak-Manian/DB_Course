@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form Inputs</title>
+
+    <style>
+        /* Page background */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lavender;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Form card */
+        form {
+            background-color: #ffffff;
+            padding: 25px;
+            width: 420px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4b0082;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            border: 1px solid #bbb;
+            font-size: 14px;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin-right: 6px;
+        }
+
+        .inline {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #9370db;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #7a5dc7;
+        }
+
+        .output {
+            margin-top: 15px;
+            background-color: #f3f0ff;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<form onsubmit="showData(event)">
+
+    <h2>HTML Form Inputs</h2>
+
+    <label>Username</label>
+    <input type="text" name="username" required>
+
+    <label>Age</label>
+    <input type="number" name="age">
+
+    <label>Password</label>
+    <input type="password" name="password">
+
+    <label>Email</label>
+    <input type="email" name="email">
+
+    <label>Date of Birth</label>
+    <input type="date" name="dob">
+
+    <label>Week</label>
+    <input type="week" name="week">
+
+    <label>Time</label>
+    <input type="time" name="appt">
+
+    <label>Website</label>
+    <input type="url" name="website">
+
+    <label>Phone</label>
+    <input type="tel" name="phone">
+
+    <label>Search</label>
+    <input type="search" name="search">
+
+    <label>Range</label>
+    <input type="range" name="volume" min="0" max="100">
+
+    <label>Favorite Color</label>
+    <input type="color" name="favcolor">
+
+    <label>Upload File</label>
+    <input type="file" name="filename">
+
+    <label>Subscriptions</label>
+    <div class="inline">
+        <input type="checkbox" name="subscribe" value="newsletter"> Newsletter
+        <input type="checkbox" name="updates" value="receive"> Updates
+        <input type="checkbox" name="offers" value="getoffers"> Offers
+    </div>
+
+    <label>Gender</label>
+    <div class="inline">
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+        <input type="radio" name="gender" value="other"> Other
+    </div>
+
+    <label>Country</label>
+    <select name="country">
+        <option value="usa">USA</option>
+        <option value="canada">Canada</option>
+        <option value="uk">UK</option>
+        <option value="australia">Australia</option>
+    </select>
+
+    <input type="submit" value="Submit Form">
+
+    <div class="output" id="output"></div>
+
+</form>
+
+<script>
+function showData(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    let result = "";
+
+    for (let [key, value] of formData.entries()) {
+        result += `${key}: ${value}<br>`;
+    }
+
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = result;
+    outputDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
